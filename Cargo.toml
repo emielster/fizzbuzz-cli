@@ -2,11 +2,15 @@
 name = "fizzbuzz-cli"
 version = "0.1.0"
 edition = "2024"
-
+description = "An extremely simple FizzBuzz CLI tool made with Clap and Colored."
+license = "MIT"
 [lib]
 name = "fizzbuzz"
 path = "src/lib.rs"
-
+readme = "README.md"
+repository = "https://github.com/emielster/fizzbuzz-cli"
+keywords = ["fizzbuzz", "cli"]
+categories = ["command-line-utilities"]
 [dependencies]
 colored = "3"
 clap = { version = "4.6.6", features = ["derive"] }
