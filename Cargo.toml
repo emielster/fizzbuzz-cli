@@ -1,6 +1,6 @@
 [package]
 name = "fizzbuzz-cli"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 description = "An extremely simple FizzBuzz CLI tool made with Clap and Colored."
 license = "MIT"
