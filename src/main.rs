@@ -10,7 +10,7 @@ use fizzbuzz::fizzbuzz;
 #[command(version, about, long_about = None)]
 struct Args {
     /// Maximum number to count up to. Only positive numbers accepted.
-    #[arg(default_value_t = 1)]
+    #[arg(default_value_t = 10)]
     max: u32,
 }
 

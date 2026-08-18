@@ -1,3 +1,21 @@
+/// Given an integer `number`, return the string implementation
+/// of that number evaluated with the following 'FizzBuzz' rules:
+///
+/// - If `number` is divisible by 3 and 5, return "FizzBuzz";
+/// - If `number` is divisible by 3, return "Fizz";
+/// - If `number` is divisible by 5, return "Buzz";
+/// - Else, return `number` as a String.
+///
+/// # Examples
+///
+/// ```
+/// use fizzbuzz::fizzbuzz;
+///
+/// assert_eq!(fizzbuzz(1), "1");
+/// assert_eq!(fizzbuzz(3), "Fizz");
+/// assert_eq!(fizzbuzz(5), "Buzz");
+/// assert_eq!(fizzbuzz(15), "FizzBuzz");
+/// ```
 pub fn fizzbuzz(number: u32) -> String {
     let divisible_by_three = number % 3 == 0;
     let divisible_by_five = number % 5 == 0;

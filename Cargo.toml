@@ -1,7 +1,11 @@
 [package]
-name = "fizzbuzz"
+name = "fizzbuzz-cli"
 version = "0.1.0"
 edition = "2024"
+
+[lib]
+name = "fizzbuzz"
+path = "src/lib.rs"
 
 [dependencies]
 colored = "3"
