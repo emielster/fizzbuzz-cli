@@ -1,47 +1,34 @@
-use std::env;
 use std::error::Error;
 use std::process;
 
+use clap::Parser;
 use colored::Colorize;
-
 use fizzbuzz::fizzbuzz;
 
-#[derive(Debug)]
-struct Config {
+/// Simple fizzbuzz program
+#[derive(Parser, Debug)]
+#[command(version, about, long_about = None)]
+struct Args {
+    /// Maximum number to count up to. Only positive numbers accepted.
+    #[arg(default_value_t = 1)]
     max: u32,
 }
 
-impl Config {
-    fn build(args: &[String]) -> Result<Config, Box<dyn Error>> {
-        let max: u32 = args
-            .get(1)
-            .ok_or("failed to get first argument. does it exist?")?
-            .parse()?;
-
-        Ok(Config { max })
-    }
-}
-
-// takes ownership because Config is not meant to be used
+// takes ownership because Args is not meant to be used
 // after that
-fn run(config: Config) -> Result<(), Box<dyn Error>> {
+fn run(config: Args) -> Result<(), Box<dyn Error>> {
     for i in 1..=config.max {
         let result = fizzbuzz(i);
 
-        println!("{}", result.as_str().yellow().bold());
+        println!("{}", result.yellow().bold());
     }
     Ok(())
 }
 
 fn main() {
-    let args: Vec<String> = env::args().collect();
-    let config = Config::build(&args).unwrap_or_else(|err| {
-        eprintln!("{}", format!("{err}").red()); // needs some special format
-        eprintln!("{}", "usage: fizzbuzz max_iterations".green().bold());
-        process::exit(-1);
-    });
+    let args = Args::parse();
 
-    if let Err(err) = run(config) {
+    if let Err(err) = run(args) {
         eprintln!("{}", format!("{err}").red());
         process::exit(-1);
     };
